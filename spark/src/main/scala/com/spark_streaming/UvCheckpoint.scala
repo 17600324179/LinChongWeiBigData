@@ -12,13 +12,13 @@ import org.apache.spark.{SparkConf, SparkContext}
   * @Author: chongweiLin  
   * @CreateDate: 2020-05-27 14:59
   **/
-object SparkStreamingHelloWorld {
+object UvCheckpoint {
   def main(args: Array[String]): Unit = {
-    // offset保存路径
+    // checkpointPath保存路径
     val checkpointPath = "hdfs://192.168.1.101:9000/spark/checkpoint/test/uv"
 
     def functionToCreateContext(): StreamingContext = {
-      val ssc = new StreamingContext(new SparkConf().setAppName("ScalaKafkaStream").setMaster("local[*]").set("spark.serializer", "org.apache.spark.serializer.KryoSerializer"), Seconds(3))
+      val ssc = new StreamingContext(new SparkConf().setAppName("ScalaKafkaStreamUvCheckpoint").setMaster("local[*]").set("spark.serializer", "org.apache.spark.serializer.KryoSerializer"), Seconds(3))
       ssc.checkpoint(checkpointPath)
 
       val bootstrapServers = "192.168.1.101:9092,192.168.1.102:9092,192.168.1.103:9092"
