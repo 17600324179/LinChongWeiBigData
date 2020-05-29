@@ -10,8 +10,13 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+/**
+ * @Description: 向kafka发送数据，kafka producer端
+ * @Author: chongweiLin
+ * @CreateDate: 2019-12-10 11:23
+ **/
 public class MyProducer {
-    private static ArrayList<String> arrayList = new ArrayList<String>(){{
+    private static ArrayList<String> arrayList = new ArrayList<String>() {{
         add("hive");
         add("spark");
         add("hdfs");
@@ -31,7 +36,7 @@ public class MyProducer {
         Properties kafkaProperties = new Properties();
 
         //kafka集群，broker-list
-        kafkaProperties.put("bootstrap.servers", "192.168.1.3:9092,192.168.1.4:9092,192.168.1.5:9092");
+        kafkaProperties.put("bootstrap.servers", "192.168.1.101:9092,192.168.1.102:9092,192.168.1.103:9092");
         kafkaProperties.put("acks", "all");
         //重试次数
         kafkaProperties.put("retries", 1);
@@ -65,7 +70,7 @@ public class MyProducer {
         System.out.println("已关闭kafka producer");
     }
 
-    private static String getKafkaValue(){
-        return arrayList.get((int) (Math.random()*arrayList.size())) + "||"+(int) (Math.random()*10);
+    private static String getKafkaValue() {
+        return arrayList.get((int) (Math.random() * arrayList.size())) + "||" + (int) (Math.random() * 10);
     }
 }

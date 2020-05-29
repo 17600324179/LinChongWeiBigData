@@ -17,7 +17,7 @@ public class MyConsumer {
     public static void main(String[] args) {
         Properties consumerProperties = new Properties();
         // 1. bootstrap.servers
-        consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.1.3:9092,192.168.1.4:9092,192.168.1.5:9092");
+        consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.1.101:9092,192.168.1.102:9092,192.168.1.103:9092");
         // 2. group.id
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "test0099");
         // 3. enable.auto.commit

@@ -1,4 +1,4 @@
-package streaming.helloworld
+package com.spark_streaming
 
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -8,20 +8,20 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 
 /**
-  * @Description:
+  * @Description: spark streaming 消费kafka的数据，统计uv，数据checkpoint到hdfs上
   * @Author: chongweiLin  
   * @CreateDate: 2020-05-27 14:59
   **/
 object SparkStreamingHelloWorld {
   def main(args: Array[String]): Unit = {
     // offset保存路径
-    val checkpointPath = "hdfs://192.168.1.3:9000/spark/checkpoint/test/uv"
+    val checkpointPath = "hdfs://192.168.1.101:9000/spark/checkpoint/test/uv"
 
     def functionToCreateContext(): StreamingContext = {
       val ssc = new StreamingContext(new SparkConf().setAppName("ScalaKafkaStream").setMaster("local[*]").set("spark.serializer", "org.apache.spark.serializer.KryoSerializer"), Seconds(3))
       ssc.checkpoint(checkpointPath)
 
-      val bootstrapServers = "192.168.1.3:9092,192.168.1.4:9092,192.168.1.5:9092"
+      val bootstrapServers = "192.168.1.101:9092,192.168.1.102:9092,192.168.1.103:9092"
       val groupId = "kafka-test-group"
       val topicName = "test"
       val maxPoll = 20000
