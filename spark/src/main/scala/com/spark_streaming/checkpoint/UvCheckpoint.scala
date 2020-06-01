@@ -1,10 +1,10 @@
-package com.spark_streaming
+package com.spark_streaming.checkpoint
 
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
+import org.apache.spark.SparkConf
 import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, LocationStrategies}
 import org.apache.spark.streaming.{Duration, Seconds, StreamingContext}
-import org.apache.spark.{SparkConf, SparkContext}
 
 
 /**

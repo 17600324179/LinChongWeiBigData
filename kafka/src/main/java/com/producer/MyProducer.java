@@ -57,12 +57,12 @@ public class MyProducer {
          * 异步发送Api: kafkaProducer.send(new ProducerRecord<String, String>(TOPIC, "timeStamp:\t" + System.currentTimeMillis()));
          * 同步发送Api: kafkaProducer.send(new ProducerRecord<String, String>(TOPIC, "timeStamp:\t" + System.currentTimeMillis())).get();
          */
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50000; i++) {
 //            kafkaProducer.send(new ProducerRecord<String, String>(TOPIC, "timeStamp:\t" + System.currentTimeMillis())).get();
             String value = getKafkaValue();
             kafkaProducer.send(new ProducerRecord<String, String>(TOPIC, value)).get();
             System.out.println(value);
-
+            Thread.sleep(500);
         }
 
         System.out.println("开始关闭kafka producer");

@@ -1,4 +1,4 @@
-package com.spark_streaming
+package com.spark_streaming.offset
 
 import java.sql.{DriverManager, ResultSet}
 
@@ -33,7 +33,7 @@ object OffsetUtil {
     * 从数据库读取偏移量
     */
   def getOffsetMap(groupid: String, topic: String) = {
-    val connection = DriverManager.getConnection("jdbc:mysql://" + ip_port + "/spark?characterEncoding=UTF-8", user_name, password)
+    val connection = DriverManager.getConnection("jdbc:mysql://" + ip_port + "/spark?useUnicode=true&characterEncoding=UTF-8", user_name, password)
     val pstmt = connection.prepareStatement("select * from t_offset where groupid=? and topic=?")
     pstmt.setString(1, groupid)
     pstmt.setString(2, topic)
@@ -52,7 +52,7 @@ object OffsetUtil {
     * 将偏移量保存到数据库
     */
   def saveOffsetRanges(groupid: String, offsetRange: Array[OffsetRange]) = {
-    val connection = DriverManager.getConnection("jdbc:mysql://" + ip_port + "/spark?characterEncoding=UTF-8", user_name, password)
+    val connection = DriverManager.getConnection("jdbc:mysql://" + ip_port + "/spark?useUnicode=true&characterEncoding=UTF-8", user_name, password)
     //replace into表示之前有就替换,没有就插入
     val pstmt = connection.prepareStatement("replace into t_offset (`topic`, `partition`, `groupid`, `offset`) values(?,?,?,?)")
     for (o <- offsetRange) {
