@@ -1,6 +1,5 @@
 package com.spark_streaming.offset
 
-import OffsetUtil
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.TopicPartition
 import org.apache.kafka.common.serialization.StringDeserializer

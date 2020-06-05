@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * @Description: 向kafka发送数据，kafka producer端
+ * @Description: 向kafka发送数据，kafka producer端,作为sparkstreaming、flink的source源
  * @Author: chongweiLin
  * @CreateDate: 2019-12-10 11:23
  **/
