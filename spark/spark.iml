@@ -175,5 +175,6 @@
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-annotations:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.39" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.18" level="project" />
   </component>
 </module>
